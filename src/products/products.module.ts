@@ -17,6 +17,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './utils/jwt.strategy';
 import { EncryptionService } from './domain/service/encryptation/encryption.service';
 import { TokenValidationService } from './utils/token-validation/token-validation.service';
+import { TransformInterceptor } from '../common/interceptors/transform.interceptor.service';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { TokenValidationService } from './utils/token-validation/token-validatio
     JwtStrategy,
     EncryptionService,
     TokenValidationService,
+    TransformInterceptor,
   ],
 })
 export class ProductsModule {}
