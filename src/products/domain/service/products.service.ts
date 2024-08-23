@@ -38,7 +38,7 @@ export class ProductsService {
       })
       .catch((error) => {
         this.logger.error(
-          `(SAVE FAILED) Error creating product: ${productE.nameProduct}`,
+          `(SAVE FAILED) Error creating product: ${productE.productName}`,
           error.stack,
         );
         throw error;

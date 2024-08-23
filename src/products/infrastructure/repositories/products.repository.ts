@@ -25,7 +25,7 @@ export class ProductsRepository implements ProductsInterface {
       })
       .catch((error) => {
         this.logger.error(
-          `(SAVE FAILED) Error creating product: ${productE.nameProduct}`,
+          `(SAVE FAILED) Error creating product: ${productE.productName}`,
           error.stack,
         );
         throw error;
@@ -95,7 +95,7 @@ export class ProductsRepository implements ProductsInterface {
       })
       .catch((error) => {
         this.logger.error(
-          `(UPDATE FAILED) Error updating product: ${ProductE.nameProduct}`,
+          `(UPDATE FAILED) Error updating product: ${ProductE.productName}`,
           error.stack,
         );
         throw error;

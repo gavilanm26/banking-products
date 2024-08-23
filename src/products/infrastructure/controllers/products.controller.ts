@@ -9,7 +9,6 @@ import {
   Patch,
   Post,
   UseGuards,
-  UseInterceptors,
 } from '@nestjs/common';
 import { CreateProductUseCaseService } from '../../../products/application/use-cases/create-product.use-case/create-product.use-case.service';
 import { DeleteProductUseCaseService } from '../../../products/application/use-cases/delete-product.use-case/delete-product.use-case.service';
@@ -21,10 +20,9 @@ import { ProductEntity } from '../../../products/domain/entities/product.entity'
 import { isValidObjectId } from 'mongoose';
 import { UpdateProductDto } from '../../application/dto/updateProducts.dto';
 import { JwtAuthGuard } from '../../../common/guards/jwt-auth.guard';
-import { TransformInterceptor } from '../../../common/interceptors/transform.interceptor.service';
+//import { TransformInterceptor } from '../../../common/interceptors/transform.interceptor.service';
 
 @Controller('products')
-@UseInterceptors(TransformInterceptor)
 export class ProductsController {
   constructor(
     private readonly createProductUseCaseService: CreateProductUseCaseService,
@@ -35,6 +33,7 @@ export class ProductsController {
   ) {}
 
   @UseGuards(JwtAuthGuard)
+  //@UseInterceptors(TransformInterceptor)
   @Post('create')
   async createProduct(
     @Body() productsDto: ProductsDto,

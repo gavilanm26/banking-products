@@ -1,23 +1,31 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber } from 'class-validator';
 
 export class ProductsDto {
-  @IsString()
   @IsNotEmpty()
+  @IsString()
   documentType: string;
 
-  @IsString()
   @IsNotEmpty()
+  @IsString()
   documentNumber: string;
 
-  @IsString()
   @IsNotEmpty()
-  nameProduct: string;
+  @IsNumber()
+  loanAmount: number;
 
-  @IsString()
   @IsNotEmpty()
-  typeProduct: string;
+  @IsString()
+  loanTerm: string;
 
-  @IsString()
   @IsNotEmpty()
+  @IsString()
+  interestRate: string;
+
+  @IsNotEmpty()
+  @IsString()
   status: string;
+
+  @IsNotEmpty()
+  @IsString()
+  productName: string;
 }

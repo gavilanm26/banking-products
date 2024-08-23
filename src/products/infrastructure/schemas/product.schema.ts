@@ -6,26 +6,26 @@ export class Product extends Document {
   @Prop({ required: true })
   documentType: string;
 
-  @Prop({
-    required: true,
-  })
+  @Prop({ required: true })
   documentNumber: string;
 
-  @Prop({
-    required: true,
-  })
-  nameProduct: string;
+  @Prop({ required: true })
+  loanAmount: number;
 
   @Prop({ required: true })
-  typeProduct: string;
+  loanTerm: string;
 
-  @Prop({
-    required: true,
-  })
-  customerKey: string;
+  @Prop({ required: true })
+  interestRate: string;
 
   @Prop({ required: true })
   status: string;
+
+  @Prop({ required: true })
+  customerKey: string;
+
+  @Prop({ required: true })
+  productName: string;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

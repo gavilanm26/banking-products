@@ -12,13 +12,15 @@ export class CreateProductUseCaseService {
     token: string,
   ): Promise<ProductEntity> {
     const customerKey = productsDto.documentType + productsDto.documentNumber;
-    const productE = new ProductEntity(
+    const productE = ProductEntity.create(
       productsDto.documentType,
       productsDto.documentNumber,
-      productsDto.nameProduct,
-      productsDto.typeProduct,
-      customerKey,
+      productsDto.loanAmount,
+      productsDto.loanTerm,
+      productsDto.interestRate,
       productsDto.status,
+      customerKey,
+      productsDto.productName, // Nombre del producto
     );
 
     return await this.productsService.create(productE, token);

@@ -15,9 +15,9 @@ export class TransformInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const request = context.switchToHttp().getRequest();
 
-    if (request.body) {
+    if (request.body.data) {
       const decryptedBody = this.encryptionService.decrypt(
-        JSON.stringify(request.body),
+        JSON.stringify(request.body.data),
       );
       request.body = JSON.parse(decryptedBody);
     }
@@ -25,7 +25,7 @@ export class TransformInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map((data) => {
         const responseData = JSON.stringify(data);
-        return this.encryptionService.encrypt(responseData);
+        return { data: this.encryptionService.encrypt(responseData) };
       }),
     );
   }

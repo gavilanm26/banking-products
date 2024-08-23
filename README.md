@@ -9,7 +9,7 @@
 
 ## Características
 
-- Creación de productos bancarios, como cuentas de ahorros, créditos, CDT, entre otros.
+- Creación de producto préstamo personal.
 - Validación de autenticación mediante tokens JWT generados por el microservicio de `OAuth`.
 - Uso de arquitectura hexagonal para la separación de responsabilidades.
 - Integración con MongoDB para la persistencia de datos.
@@ -20,20 +20,21 @@
 - Node.js (última versión recomendada)
 - MongoDB
 - Docker (opcional para despliegue en contenedores)
+- Microservicio de `OAuth`: Debes tener configurado y en funcionamiento el microservicio de OAuth para la generación de tokens JWT, los cuales son necesarios para la autenticación en este microservicio.
 
 ## Instalación
 
-1. Instala las dependencias:
+### 1. Instala las dependencias:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-2. Configura las variables de entorno:
+### 2. Configura las variables de entorno:
 
-   Crea un archivo `.env` en la raíz del proyecto y copia las variables del archivo `.env.example` proporcionado.
+Crea un archivo `.env` en la raíz del proyecto y copia las variables del archivo `.env.example` proporcionado.
 
-   Nota: Si estás usando Docker, no necesitas configurar el archivo `.env` manualmente, ya que las variables de entorno se configuran en el `docker-compose.yml`.
+Nota: Si estás usando Docker, no necesitas configurar el archivo `.env` manualmente, ya que las variables de entorno se configuran en el `docker-compose.yml`.
 
 ## Uso
 
@@ -72,13 +73,16 @@ El servicio estará disponible en \`http://localhost:3001\` y MongoDB en \`mongo
   }
   ```
 - **Body**:
+
   ```json
   {
     "documentType": "CC",
-    "documentNumber": "123456789",
-    "nameProduct": "Saving Account",
-    "typeProduct": "Account",
-    "status": "Active"
+    "documentNumber": "123456787",
+    "loanAmount": 50000,
+    "loanTerm": "12 months",
+    "interestRate": "33.02",
+    "status": "active",
+    "productName": "Personal Loan"
   }
   ```
 
